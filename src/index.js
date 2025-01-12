@@ -1,13 +1,30 @@
 import "./styles.css";
-import _switchToHomeTab, { homeButton, wrapper, title, slogan, image } from "./homepage.js";
-import _switchToMenuTab, { menuButton } from "./menu.js";
-import _switchToAboutTab, { aboutButton } from "./about.js";
+import homeTab from "./homepage.js";
+import menuTab from "./menu.js";
+import aboutTab from "./about.js";
 
+const homeButton = document.querySelector(".home");
+const menuButton = document.querySelector(".menu");
+const aboutButton = document.querySelector(".about");
 
-homeButton.addEventListener("click", _switchToHomeTab); 
-menuButton.addEventListener("click", _switchToMenuTab);    
-aboutButton.addEventListener("click", _switchToAboutTab);                   
+function switchTab(e) {
+    Array.from(document.querySelectorAll("button"))
+        .forEach(
+            item => item.style.backgroundColor = "violet"
+        );
+    e.target.style.backgroundColor = "darkred";
+    clearDisplay();
+    if (e.target.classList.contains("home")) homeTab();
+    if (e.target.classList.contains("menu")) menuTab();
+    if (e.target.classList.contains("about")) aboutTab();
+};
 
+function clearDisplay() {
+    const container = document.getElementById("content")
+    const oldWrapper = document.querySelector("#content>div")
+    container.removeChild(oldWrapper)
+}
 
-// delete everything below
-console.log("This is a test. Purple Kangaroos.");
+homeButton.addEventListener("click", switchTab); 
+menuButton.addEventListener("click", switchTab);    
+aboutButton.addEventListener("click", switchTab);
