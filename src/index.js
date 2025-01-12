@@ -1,9 +1,17 @@
 import "./styles.css";
-import { wrapper, title, slogan, image } from "./homepage.js";
+import _switchToHomeTab, { homeButton } from "./homepage.js";
+import _switchToMenuTab, { menuButton } from "./menu.js";
+import _switchToAboutTab, { aboutButton } from "./about.js";
 
-console.log(wrapper);
-console.log(title);
-console.log(slogan);
-console.log(image);
+const wrapper = document.getElementById("content");
+const title = document.createElement("h1");
+const slogan = document.createElement("p");
+const image = document.createElement("img");
 
+homeButton.addEventListener("click", _switchToHomeTab); 
+menuButton.addEventListener("click", _switchToMenuTab);    
+aboutButton.addEventListener("click", _switchToAboutTab);                   
+
+
+// delete everything below
 console.log("This is a test. Purple Kangaroos.");
